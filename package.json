@@ -1,0 +1,19 @@
+{
+  "name": "yappybots-addons",
+  "version": "0.1.0-dev",
+  "description": "Addons & utilities for the Yappy Bots",
+  "main": "lib/index.js",
+  "private": true,
+  "repository": {
+    "url": "https://github.com/YappyBots/Addons",
+    "type": "git"
+  },
+  "author": "David Sevilla Martin <dsevilla192@icloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "discord.js": "^11.1.0",
+    "express": "^4.15.3",
+    "snekfetch": "^3.2.4"
+  }
+}

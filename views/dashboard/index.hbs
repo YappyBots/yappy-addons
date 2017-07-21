@@ -1,0 +1,18 @@
+<div class="container columns">
+  <ul class="column is-offset-1">
+    <h1 class="title">Your Guilds</h1>
+    <br><br>
+    {{#each guilds}}
+    <li>
+      {{#if icon}}
+      <img src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.png" alt="{{name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
+      {{else}}
+      <span style="margin-right: 40px"></span>
+      {{/if}}
+      <b>{{name}}</b> {{#if owner}}<i>Owner</i>{{/if}} <br>
+    </li>
+    <br>
+    {{/each}}
+  </ul>
+</div>
+</div>
