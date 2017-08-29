@@ -1,0 +1,53 @@
+<div class="container section">
+  <div class="column is-offset-1">
+    <h1 class="title">
+      {{#if guild.icon}}
+      <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}.png" alt="{{guild.name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
+      {{/if}}
+      {{guild.name}}
+    </h1>
+    <br>
+    <div class="row">
+      <form action="#"  class="col">
+        {{#if conf.global}}
+        <div class="row">
+          {{#each conf.global}}
+          {{#isnt @key '_client'}}
+          {{#isnt @key '__v'}}
+          {{#isnt @key 'guildName'}}
+          {{#isnt @key 'guildID'}}
+          {{#isnt @key '_id'}}
+          <div class="form-group form-group-no-border col-sm-4">
+            <label for="prefix">
+              {{@key}}
+            </label>
+            <input type="text" value="{{this}}" placeholder="{{@key}}" name="{{@key}}" class="form-control" />
+          </div>
+          {{/isnt}}
+          {{/isnt}}
+          {{/isnt}}
+          {{/isnt}}
+          {{/isnt}}
+          {{/each}}
+        </div>
+        {{else}}
+        <div class="alert alert-danger" role="alert">
+          <div class="container">
+            <div class="alert-icon">
+              <i class="now-ui-icons objects_support-17"></i>
+            </div>
+            <strong>Oh snap!</strong> The global configuration was not found.
+          </div>
+        </div>
+        {{/if}}
+      </form>
+      <ul>
+        {{#each channels}}
+        <li>
+          <a href="/dashboard/{{../guild.id}}/{{id}}" style="font-weight: bold;">#{{name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
