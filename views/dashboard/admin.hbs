@@ -106,7 +106,7 @@ const ramUsage = Highcharts.chart("ramUsage", {
 
 function requestData() {
   $.ajax({
-    url: {{url '/dashboard/admin/statistics/json'}},
+    url: '{{url '/dashboard/admin/statistics/json'}}',
     success: function(point) {
       if (arrayEquals(usage.series[0], point.cpu) === false) usage.series[0].addPoint(point.cpu[95], true, true);
       if (arrayEquals(ramUsage.series[0], point.prc) === false) ramUsage.series[0].addPoint(point.prc[95], true, true);
@@ -128,7 +128,7 @@ function arrayEquals(chart, newA) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
   $.ajax({
-    url: {{url '/dashboard/admin/statistics/json'}},
+    url: '{{url '/dashboard/admin/statistics/json'}}',
     success: function(point) {
       usage.series[0].setData(point.cpu, true);
       ramUsage.series[0].setData(point.prc, true);
