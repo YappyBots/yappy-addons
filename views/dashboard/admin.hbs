@@ -127,15 +127,14 @@ function arrayEquals(chart, newA) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  $.ajax({
-    url: '{{url '/dashboard/admin/statistics/json'}}',
-    success: function(point) {
-      usage.series[0].setData(point.cpu, true);
-      ramUsage.series[0].setData(point.prc, true);
-      ramUsage.series[1].setData(point.ram, true);
-      setTimeout(requestData, 60000);
-    }
-  });
+  var cpu = "{{statistics.cpu}}".split(',').map(s => Number(s));
+  var prc = "{{statistics.prc}}".split(',').map(s => Number(s));
+  var ram = "{{statistics.ram}}".split(',').map(s => Number(s));
+
+  usage.series[0].setData(cpu, true);
+  ramUsage.series[0].setData(prc, true);
+  ramUsage.series[1].setData(ram, true);
+  setTimeout(requestData, 60000);
 });
 </script>
 
