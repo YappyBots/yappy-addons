@@ -1,50 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>{{title}}</title>
-  <link rel="stylesheet" href="{{url '/assets/css/bootstrap.min.css'}}" />
-  <link rel="stylesheet" href="{{url '/assets/css/now-ui-kit.css'}}" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+  <!-- Bulma Version 0.6.0 -->
+  <link rel="stylesheet" href="{{url '/assets/css/bulma.css'}}" />
+  <link rel="stylesheet" href="{{url '/assets/css/admin.css'}}" />
 </head>
 <body>
-  <nav class="navbar navbar-toggleable-md bg-info">
+  <nav class="navbar is-white">
     <div class="container">
-      <div class="navbar-translate">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
-        </button>
-
-        <a class="navbar-brand" href="#">
+      <div class="navbar-brand">
+        <a class="navbar-item brand-text" href="../">
           {{bot.user.username}}
         </a>
+        <div class="navbar-burger burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
 
-      <div class="collapse navbar-collapse" id="navigation">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{{url '/'}}">
-              Home
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url '/dashboard'}}">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://discordapp.com/oauth2/authorize?permissions=67193856&scope=bot&client_id=303661490114789391">Invite</a>
-          </li>
-        </ul>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="{{url '/'}}">Home</a>
+          <a class="navbar-item" href="{{url '/dashboard'}}">Dashboard</a>
+          <a class="navbar-item" href="https://discord.now.sh/{{bot.user.id}}?p67193856">Invite</a>
+        </div>
       </div>
     </div>
   </nav>
 
   <script src="{{url '/assets/js/jquery.3.2.1.min.js'}}"></script>
 
-  {{{body}}}
+  <div class="container">
+    {{#if err}}
+    {{{body}}}
+    {{else}}
+    <div class="columns">
+      <div class="column is-3">
+        <aside class="menu">
+          <p class="menu-label">
+            General
+          </p>
+          <ul class="menu-list">
+            <li>
+              <a href="{{url '/dashboard'}}" {{#unless statistics}}class="is-active"{{/unless}}>
+                Dashboard
+              </a>
+            </li>
+            {{#includes bot.config.owner user.id}}
+            <li>
+              <a href="{{url '/dashboard/admin/statistics'}}" {{#if statistics}}class="is-active"{{/if}}>
+                Statistics
+              </a>
+            </li>
+            {{/includes}}
+          </ul>
+        </aside>
+      </div>
+      <div class="column is-9">
+        <section class="hero is-info welcome is-small">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Welcome {{user.username}}#{{user.discriminator}}
+              </h1>
+            </div>
+          </div>
+        </section>
 
-  <script src="{{url '/assets/js/tether.min.js'}}"></script>
-  <script src="{{url '/assets/js/bootstrap.min.js'}}"></script>
-  <script src="{{url '/assets/js/now-ui-kit.js'}}"></script>
+        <br>
+        {{{body}}}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+
+
+  {{!-- // <script src="{{url '/assets/js/tether.min.js'}}"></script> --}}
+  {{!-- // <script src="{{url '/assets/js/bootstrap.min.js'}}"></script> --}}
+  {{!-- // <script src="{{url '/assets/js/now-ui-kit.js'}}"></script> --}}
 </body>
 </html>

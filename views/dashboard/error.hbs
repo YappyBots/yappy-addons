@@ -1,39 +1,35 @@
-<section id="news" style="background:#222223; width:100vw; height:100vh; position: fixed; top: 0; z-index: -1;">
-    <div class="container">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="content" style="padding-top:7vw; color:#efefef;">
-                <h1 style="font-size:16vw;">{{err.status}}</h1>
-                <h2 style="font-size:3vw;">
-                  {{#unless err.stack}}
-                  {{err.message}}
-                  {{else}}
-                  {{#is err.status 400}}
-                  Bad Request
-                  {{/is}}
-                  {{#is err.status 401}}
-                  Unauthorized
-                  {{/is}}
-                  {{#is err.status 403}}
-                  Access Denied
-                  {{/is}}
-                  {{#is err.status 404}}
-                  Not Found
-                  {{/is}}
-                  {{#is err.status 408}}
-                  Request Timeout
-                  {{/is}}
-                  {{#is err.status 429}}
-                  Too Many Requests
-                  {{/is}}
-                  {{#is err.status 500}}
-                  Internal Server Error
-                  {{/is}}
-                  {{#is err.status 503}}
-                  Service Unavailable
-                  {{/is}}
-                  {{/unless}}
-                </h2>
-            </div>
-        </div>
-    </div>
+<section id="error">
+  <div class="container">
+    <h1 style="font-size:12vw;">{{err.status}}</h1>
+    <h2 style="font-size:2vw;">
+      {{#unless err.stack}}
+      {{err.message}}
+      {{else}}
+      {{#is err.status 400}}
+      Bad Request
+      {{/is}}
+      {{#is err.status 401}}
+      Unauthorized
+      {{/is}}
+      {{#is err.status 403}}
+      Access Denied
+      {{/is}}
+      {{#is err.status 404}}
+      Not Found
+      {{/is}}
+      {{#is err.status 408}}
+      Request Timeout
+      {{/is}}
+      {{#is err.status 429}}
+      Too Many Requests
+      {{/is}}
+      {{#is err.status 500}}
+      Internal Server Error
+      {{/is}}
+      {{#is err.status 503}}
+      Service Unavailable
+      {{/is}}
+      {{/unless}}
+    </h2>
+  </div>
 </section>

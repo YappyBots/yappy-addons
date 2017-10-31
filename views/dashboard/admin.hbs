@@ -2,59 +2,21 @@
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<section id="statistics">
-  <div class="container">
-    <hr></hr>
-    <h2>CPU Usage</h2>
-    <div class="graph" id="usage"></div>
-    <h2>RAM Usage</h2>
-    <div class="graph" id="ramUsage"></div>
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">RAM Usage</p>
+  </header>
+  <div class="card-table">
+    <div class="content">
+      <div class="graph" id="ramUsage"></div>
+    </div>
   </div>
-</section>
+</div>
 
 <script>
 Highcharts.setOptions({
   global: {
     useUTC: false
-  }
-})
-const usage = Highcharts.chart("usage", {
-  chart: {},
-  title: {
-    text: null
-  },
-  credits: {
-    enabled: false
-  },
-  xAxis: {
-    type: "datetime"
-  },
-  yAxis: {
-    title: {
-      text: null
-    },
-    allowDecimals: false,
-    min: 0,
-    max: 100,
-  },
-  plotOptions: {
-    series: {
-      pointStart: Date.now() - 300000 * 95,
-      pointInterval: 300000
-    }
-  },
-  series: [{
-    name: "CPU Usage",
-    data: [],
-    color: "#00adff",
-    tooltip: {
-      pointFormat: "CPU Usage: {point.y}%"
-    },
-  }],
-  navigation: {
-    buttonOptions: {
-      enabled: false
-    }
   }
 });
 
@@ -108,10 +70,9 @@ function requestData() {
   $.ajax({
     url: '{{url '/dashboard/admin/statistics/json'}}',
     success: function(point) {
-      if (arrayEquals(usage.series[0], point.cpu) === false) usage.series[0].addPoint(point.cpu[95], true, true);
       if (arrayEquals(ramUsage.series[0], point.prc) === false) ramUsage.series[0].addPoint(point.prc[95], true, true);
       if (arrayEquals(ramUsage.series[1], point.ram) === false) ramUsage.series[1].addPoint(point.ram[95], true, true);
-      console.log(`[GET] Updating charts. CPU: ${point.cpu[95]} | PRC: ${point.prc[95]} | RAM: ${point.ram[95]}`);
+      console.log(`[GET] Updating charts. PRC: ${point.prc[95]} | RAM: ${point.ram[95]}`);
       setTimeout(requestData, 60000);
     },
     cache: false
@@ -127,11 +88,9 @@ function arrayEquals(chart, newA) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  var cpu = "{{statistics.cpu}}".split(',').map(s => Number(s));
   var prc = "{{statistics.prc}}".split(',').map(s => Number(s));
   var ram = "{{statistics.ram}}".split(',').map(s => Number(s));
 
-  usage.series[0].setData(cpu, true);
   ramUsage.series[0].setData(prc, true);
   ramUsage.series[1].setData(ram, true);
   setTimeout(requestData, 60000);
