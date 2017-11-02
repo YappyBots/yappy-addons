@@ -1,53 +1,62 @@
-<div class="container section">
-  <div class="column is-offset-1">
-    <h1 class="title">
-      {{#if guild.icon}}
-      <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}.png" alt="{{guild.name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
-      {{/if}}
-      {{guild.name}}
-    </h1>
-    <br>
-    <div class="row">
-      <form action="#"  class="col">
-        {{#if conf.global}}
-        <div class="row">
-          {{#each conf.global}}
-          {{#isnt @key '_client'}}
-          {{#isnt @key '__v'}}
-          {{#isnt @key 'guildName'}}
-          {{#isnt @key 'guildID'}}
-          {{#isnt @key '_id'}}
-          <div class="form-group form-group-no-border col-sm-4">
-            <label for="prefix">
-              {{@key}}
-            </label>
-            <input type="text" value="{{this}}" placeholder="{{@key}}" name="{{@key}}" class="form-control" />
-          </div>
-          {{/isnt}}
-          {{/isnt}}
-          {{/isnt}}
-          {{/isnt}}
-          {{/isnt}}
-          {{/each}}
+<h2 class="title is-3">
+  {{#if guild.icon}}
+  <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}.png" alt="{{guild.name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
+  {{/if}}
+  {{guild.name}}
+</h2>
+
+<div class="columns">
+  <form action="#" class="column">
+    {{#if conf.global}}
+    <div class="columns">
+      {{#each conf.global}}
+      {{#isnt @key '_client'}}
+      {{#isnt @key '__v'}}
+      {{#isnt @key 'guildName'}}
+      {{#isnt @key 'guildID'}}
+      {{#isnt @key '_id'}}
+      <div class="field column is-one-third">
+        <label class="label">{{@key}}</label>
+        <div class="control">
+          <input class="input" type="text" value="{{this}}" placeholder="{{@key}}" name="{{@key}}">
         </div>
-        {{else}}
-        <div class="alert alert-danger" role="alert">
-          <div class="container">
-            <div class="alert-icon">
-              <i class="now-ui-icons objects_support-17"></i>
-            </div>
-            <strong>Oh snap!</strong> The global configuration was not found.
-          </div>
-        </div>
-        {{/if}}
-      </form>
-      <ul>
-        {{#each channels}}
-        <li>
-          <a href="{{host}}/dashboard/guilds/{{../guild.id}}/{{id}}" style="font-weight: bold;">#{{name}}</a>
-        </li>
-        {{/each}}
-      </ul>
+      </div>
+      {{/isnt}}
+      {{/isnt}}
+      {{/isnt}}
+      {{/isnt}}
+      {{/isnt}}
+      {{/each}}
     </div>
-  </div>
+    {{else}}
+    <article class="message is-danger">
+      <div class="message-header">
+        <p>Oh snap!</p>
+      </div>
+      <div class="message-body">
+        The global configuration was not found
+      </div>
+    </article>
+    {{/if}}
+  </form>
+  <nav class="panel column is-one-third">
+    <p class="panel-heading is-size-4">
+      Channels
+    </p>
+    {{#each channels}}
+    {{#isnt @key "undefined"}}
+    <p class="panel-heading is-size-6">
+      {{@key}}
+    </p>
+    {{/isnt}}
+    {{#each this}}
+    <a class="panel-block is-active" href="{{host}}/dashboard/guilds/{{../../guild.id}}/{{id}}">
+      <span class="panel-icon">
+        <i class="fa fa-file-text-o"></i>
+      </span>
+      #{{name}}
+    </a>
+    {{/each}}
+    {{/each}}
+  </nav>
 </div>

@@ -1,42 +1,23 @@
-{{!-- <div class="container section">
-<ul class="column is-offset-1">
-<h1 class="title">Your Guilds</h1>
-<br>
-{{#each guilds}}
-<li>
-{{#if icon}}
-<img src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.png" alt="{{name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
-{{else}}
-<span style="border-radius: 50px; border: 1px solid black; height: 32px; width: 32px; display: inline-block; text-align: center; padding-top: 3px;">
-{{initials name}}
-</span>
-{{/if}}
-<a href="{{host}}/dashboard/{{id}}" style="font-weight: bold;">{{name}}</a> {{#if owner}}<i>Owner</i>{{/if}} <br>
-</li>
-<br>
-{{/each}}
-</ul>
-</div>
---}}
-
 <h2 class="title is-3">Guilds</h2>
 
 <div class="columns">
   {{#each guilds}}
   <div class="column is-one-third">
     <div class="card">
-      <header class="card-header">
-        <p class="card-header-icon">
-          {{#if icon}}
-          <img src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.png" alt="{{name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
-          {{else}}
-          <span style="border-radius: 50px; border: 1px solid black; height: 32px; width: 32px; display: inline-block; text-align: center; padding-top: 3px;">
-          {{initials name}}
-          </span>
-          {{/if}}
-        </p>
-        <a href="{{host}}/dashboard/guilds/{{id}}" class="card-header-title">{{name}}</a>
-      </header>
+      <a href="{{host}}/dashboard/guilds/{{id}}">
+        <header class="card-header">
+          <p class="card-header-icon">
+            {{#if icon}}
+            <img src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.png" alt="{{name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
+            {{else}}
+            <span style="border-radius: 50px; border: 1px solid black; color: gray; height: 32px; width: 32px; display: inline-block; text-align: center; padding-top: 3px;">
+              {{initials name}}
+            </span>
+            {{/if}}
+          </p>
+          <span class="card-header-title">{{name}}</span>
+        </header>
+      </a>
     </div>
   </div>
   {{/each}}
