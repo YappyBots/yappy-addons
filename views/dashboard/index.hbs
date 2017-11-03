@@ -1,5 +1,6 @@
 <h2 class="title is-3">Guilds</h2>
 
+{{#if guilds.length}}
 <div class="columns">
   {{#each guilds}}
   <div class="column is-one-third">
@@ -22,3 +23,13 @@
   </div>
   {{/each}}
 </div>
+{{else}}
+<article class="message is-danger">
+  <div class="message-header">
+    <p>Oh snap!</p>
+  </div>
+  <div class="message-body">
+    No guilds found with the bot where you are admin. <a href="{{url '/login'}}">Refresh list</a>.
+  </div>
+</article>
+{{/if}}
