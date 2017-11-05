@@ -27,7 +27,8 @@
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
           <a class="navbar-item" href="{{url '/'}}">Home</a>
-          <a class="navbar-item" href="{{url '/dashboard'}}">Dashboard</a>
+          <a class="navbar-item {{#if user}}is-active{{/if}}" href="{{url '/dashboard'}}">Dashboard</a>
+          <a class="navbar-item {{#if commands}}is-active{{/if}}" href="{{url '/commands'}}">Commands</a>
           <a class="navbar-item" href="https://discord.now.sh/{{bot.user.id}}?p67193856">Invite</a>
         </div>
       </div>
@@ -81,6 +82,34 @@
     </div>
     {{/if}}
   </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // Get all "navbar-burger" elements
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(function ($el) {
+        $el.addEventListener('click', function () {
+
+          // Get the target from the "data-target" attribute
+          var target = $el.dataset.target;
+          var $target = document.getElementById(target);
+
+          // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+          $el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+    }
+
+  });
+  </script>
 
 
   {{!-- // <script src="{{url '/assets/js/tether.min.js'}}"></script> --}}

@@ -1,0 +1,72 @@
+{{#if commands.length}}
+<div class="columns is-multiline">
+  {{#each commands}}
+  <div class="column">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{capitalizeFirst name}}
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <table class="table is-fullwidth">
+            <tbody>
+              <tr>
+                <th>Description</th>
+                <td>{{capitalizeFirst (default help.description help.summary)}}</td>
+              </tr>
+
+              {{#if conf.permLevel}}
+              {{#isnt conf.permLevel 0}}
+              <tr>
+                <th>Permission</th>
+                <td>
+                  {{#is conf.permLevel 0}}Everyone{{/is}}
+                  {{#is conf.permLevel 1}}Administrator{{/is}}
+                  {{#is conf.permLevel 2}}Bot Owner{{/is}}
+                </td>
+              </tr>
+              {{/isnt}}
+              {{/if}}
+
+              {{#if conf.aliases}}
+              <tr>
+                <th>Aliases</th>
+                <td><code>{{conf.aliases}}</code></td>
+              </tr>
+              {{/if}}
+
+              <tr>
+                <th>Usage</th>
+                <td><code>{{help.usage}}</code></td>
+              </tr>
+
+              {{#if help.examples}}
+              <tr>
+                <th>Examples</th>
+                <td>
+                  {{#each help.examples}}
+                  <li><code>{{this}}</code></li>
+                  {{/each}}
+                </td>
+              </tr>
+              {{/if}}
+
+              {{#if conf.guildOnly}}
+              <tr>
+                <th>Guild Only</th>
+                <td>Yes</td>
+              </tr>
+              {{/if}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{else}}
+No commands found
+{{/if}}
