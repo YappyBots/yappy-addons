@@ -13,9 +13,9 @@
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "discord.js": "github:hydrabolt/discord.js",
-    "express": "^4.15.3",
+    "express": "^4.16.2",
     "hbs": "^4.0.1",
-    "snekfetch": "^3.2.4",
+    "snekfetch": "^3.6.4",
     "swag": "^0.7.0"
   }
 }
