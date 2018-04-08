@@ -12,10 +12,12 @@
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.3",
-    "discord.js": "github:discordjs/discord.js#master",
-    "express": "^4.16.3",
-    "hbs": "^4.0.1",
-    "snekfetch": "^3.6.4",
     "swag": "^0.7.0"
+  },
+  "peerDependencies": {
+    "discord.js": "github:discordjs/discord.js#master",
+    "express": "4.x",
+    "hbs": "4x",
+    "snekfetch": "3x"
   }
 }
