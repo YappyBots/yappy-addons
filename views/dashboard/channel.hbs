@@ -1,42 +1,41 @@
-<h2 class="title is-3">
-  {{#if guild.icon}}
-  <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}.png" alt="{{guild.name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
-  {{/if}}
-  {{guild.name}} #{{channel.name}}
+<h2 class='title is-3'>
+    {{#if guild.icon}}
+        <img
+            src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}.png"
+            alt="{{guild.name}}"
+            width='32'
+            style='border-radius: 50px; margin-right: 8px'
+        />
+    {{/if}}
+    {{guild.name}} #{{channel.name}}
 </h2>
 
 {{#if conf.channel}}
-<form action="#">
-  {{#each conf.channel}}
-  {{#isnt @key '_client'}}
-  {{#isnt @key '__v'}}
-  {{#isnt @key 'guildName'}}
-  {{#isnt @key 'guildID'}}
-  {{#isnt @key 'channelName'}}
-  {{#isnt @key 'channelID'}}
-  {{#isnt @key '_id'}}
-  <div class="field">
-    <label class="label">{{@key}}</label>
-    <div class="control">
-      <input class="input" type="text" value="{{this}}" name="{{@key}}">
-    </div>
-  </div>
-  {{/isnt}}
-  {{/isnt}}
-  {{/isnt}}
-  {{/isnt}}
-  {{/isnt}}
-  {{/isnt}}
-  {{/isnt}}
-  {{/each}}
-</form>
+    <form action='#'>
+        {{#each conf.channel}}
+            {{#isnt @key 'id'}}
+                {{#isnt @key 'name'}}
+                      <div class='field'>
+                          <label class='label'>
+                              {{@key}}
+                          </label>
+                          <div class='control'>
+                              <input class='input' type='text' value="{{this}}" name="{{@key}}" />
+                          </div>
+                      </div>
+                {{/isnt}}
+            {{/isnt}}
+        {{/each}}
+    </form>
 {{else}}
-<article class="message is-danger">
-  <div class="message-header">
-    <p>Oh snap!</p>
-  </div>
-  <div class="message-body">
-    The channel configuration was not found
-  </div>
-</article>
+    <article class='message is-danger'>
+        <div class='message-header'>
+            <p>
+                Oh snap!
+            </p>
+        </div>
+        <div class='message-body'>
+            The channel configuration was not found
+        </div>
+    </article>
 {{/if}}

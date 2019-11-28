@@ -10,23 +10,17 @@
     {{#if conf.global}}
     <div class="columns">
       {{#each conf.global}}
-      {{#isnt @key '_client'}}
-      {{#isnt @key '__v'}}
-      {{#isnt @key 'guildName'}}
-      {{#isnt @key 'guildID'}}
-      {{#isnt @key '_id'}}
+      {{#isnt @key 'id'}}
+      {{#isnt @key 'name'}}
       <div class="field column is-one-third">
         <label class="label">{{@key}}</label>
         <div class="control">
           <input class="input" type="text" value="{{this}}" placeholder="{{@key}}" name="{{@key}}">
         </div>
       </div>
-      {{/isnt}}
-      {{/isnt}}
-      {{/isnt}}
-      {{/isnt}}
-      {{/isnt}}
-      {{/each}}
+    {{/isnt}}
+    {{/isnt}}
+    {{/each}}
     </div>
     {{else}}
     <article class="message is-danger">

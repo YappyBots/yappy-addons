@@ -31,6 +31,14 @@
           <a class="navbar-item {{#if commands}}is-active{{/if}}" href="{{url '/commands'}}">Commands</a>
           <a class="navbar-item" href="https://discord.now.sh/{{bot.user.id}}?p67193856">Invite</a>
         </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a href="{{url '/logout'}}" class="button is-dark is-outlined">
+              Logout
+            </a>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </nav>

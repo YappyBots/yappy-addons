@@ -1,35 +1,52 @@
-<h2 class="title is-3">Guilds</h2>
+<h2 class='title is-3'>
+    Guilds
+</h2>
 
 {{#if guilds.length}}
-<div class="columns">
-  {{#each guilds}}
-  <div class="column is-one-third">
-    <div class="card">
-      <a href="{{host}}/dashboard/guilds/{{id}}">
-        <header class="card-header">
-          <p class="card-header-icon">
-            {{#if icon}}
-            <img src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.png" alt="{{name}}" width="32" style="border-radius: 50px; margin-right: 8px" />
-            {{else}}
-            <span style="border-radius: 50px; border: 1px solid black; color: gray; height: 32px; width: 32px; display: inline-block; text-align: center; padding-top: 3px;">
-              {{initials name}}
-            </span>
-            {{/if}}
-          </p>
-          <span class="card-header-title">{{name}}</span>
-        </header>
-      </a>
+    <div class='columns'>
+        {{#each guilds}}
+            <div class='column is-one-third'>
+                <div class='card'>
+                    <a href="{{host}}/dashboard/guilds/{{id}}">
+                        <header class='card-header'>
+                            <p class='card-header-icon'>
+                                {{#if icon}}
+                                    <img
+                                        src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.png"
+                                        alt="{{name}}"
+                                        width='32'
+                                        style='border-radius: 50px; margin-right: 8px'
+                                    />
+                                {{else}}
+                                    <span
+                                        style='border-radius: 50px; border: 1px solid black; color: gray; height: 32px; width: 32px; display: inline-block; text-align: center; padding-top: 3px;'
+                                    >
+                                        {{initials name}}
+                                    </span>
+                                {{/if}}
+                            </p>
+                            <span class='card-header-title'>
+                                {{name}}
+                            </span>
+                        </header>
+                    </a>
+                </div>
+            </div>
+        {{/each}}
     </div>
-  </div>
-  {{/each}}
-</div>
 {{else}}
-<article class="message is-danger">
-  <div class="message-header">
-    <p>Oh snap!</p>
-  </div>
-  <div class="message-body">
-    No guilds found with the bot where you are admin. <a href="{{url '/login'}}">Refresh list</a>.
-  </div>
-</article>
+    <article class='message is-danger'>
+        <div class='message-header'>
+            <p>
+                Oh snap!
+            </p>
+        </div>
+        <div class='message-body'>
+            No guilds found with the bot where you are admin.
+            <a href="{{url '/login'}}">
+                Refresh list
+            </a>
+            .
+        </div>
+    </article>
 {{/if}}
