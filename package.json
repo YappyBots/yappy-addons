@@ -1,6 +1,6 @@
 {
   "name": "@YappyBots/addons",
-  "version": "0.2.0",
+  "version": "0.2.0-dev",
   "description": "Addons & utilities for the Yappy Bots",
   "main": "lib/index.js",
   "private": true,
