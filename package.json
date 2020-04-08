@@ -1,6 +1,6 @@
 {
   "name": "@YappyBots/addons",
-  "version": "0.1.0-dev",
+  "version": "0.2.0",
   "description": "Addons & utilities for the Yappy Bots",
   "main": "lib/index.js",
   "private": true,
@@ -11,19 +11,19 @@
   "author": "David Sevilla Martin <me+yappybots@datitisev.me>",
   "license": "MIT",
   "scripts": {
-    "lint": "prettier --single-quote --trailing-comma es5 --print-width 150 --tab-width 4 --write lib/**/*"
+    "lint": "prettier --single-quote --trailing-comma es5 --print-width 150 --tab-width 4 --write lib"
   },
   "dependencies": {
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "^1.4.5",
     "swag": "^0.7.0"
   },
   "peerDependencies": {
-    "discord.js": "github:discordjs/discord.js#master",
-    "express": "4.x",
-    "hbs": "4x",
-    "snekfetch": "3x"
+    "discord.js": "^12",
+    "express": "^4",
+    "hbs": "^4",
+    "got": "^10"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.4"
   }
 }

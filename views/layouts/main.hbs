@@ -29,7 +29,7 @@
           <a class="navbar-item" href="{{url '/'}}">Home</a>
           <a class="navbar-item {{#if user}}is-active{{/if}}" href="{{url '/dashboard'}}">Dashboard</a>
           <a class="navbar-item {{#if commands}}is-active{{/if}}" href="{{url '/commands'}}">Commands</a>
-          <a class="navbar-item" href="https://discord.now.sh/{{bot.user.id}}?p67193856">Invite</a>
+          <a class="navbar-item" href="https://discordapp.com/oauth2/authorize?client_id={{bot.user.id}}&permissions=67193856&scope=bot">Invite</a>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
