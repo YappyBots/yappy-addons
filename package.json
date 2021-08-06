@@ -18,10 +18,10 @@
     "swag": "^0.7.0"
   },
   "peerDependencies": {
-    "discord.js": "^12",
+    "discord.js": "^13",
     "express": "^4",
     "hbs": "^4",
-    "got": "^10"
+    "got": "^11"
   },
   "devDependencies": {
     "prettier": "^2.0.4"
