@@ -18,10 +18,11 @@
     "swag": "^0.7.0"
   },
   "peerDependencies": {
+    "@discordjs/builders": "^0.10.0",
     "discord.js": "^13",
     "express": "^4",
-    "hbs": "^4",
-    "got": "^11"
+    "got": "^11",
+    "hbs": "^4"
   },
   "devDependencies": {
     "prettier": "^2.0.4"
