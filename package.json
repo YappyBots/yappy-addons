@@ -1,6 +1,6 @@
 {
   "name": "@YappyBots/addons",
-  "version": "0.2.0-dev",
+  "version": "0.3.0-dev",
   "description": "Addons & utilities for the Yappy Bots",
   "main": "lib/index.js",
   "private": true,
@@ -18,10 +18,8 @@
     "swag": "^0.7.0"
   },
   "peerDependencies": {
-    "@discordjs/builders": "^1.4.0",
-    "discord.js": "^13",
+    "discord.js": "^14",
     "express": "^4",
-    "got": "^11",
     "hbs": "^4"
   },
   "devDependencies": {
